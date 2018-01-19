@@ -3,34 +3,57 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../node_modules/angular-material/angular-material.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
     <title>Favorite Board Games</title>
   </head>
   <body>
-    <h1 class="md-display-3 title">Favorite Board Games</h1>
-    <div ng-controller="CardController as cardCtrl" ng-cloak>
-      <md-content class="md-padding" layout-xs="column" layout="row">
-        <div class="center" layout="row">
-          <md-card ng-repeat="card in cardCtrl.cards track by $index" flex-xs flex-gt-xs="50" md-theme="default">
-            <md-card-title>
-              <md-card-title-text>
-                <span class="md-headline">{{card.title}}</span>
-                <span class="md-subhead">{{card.desc}}</span>
-              </md-card-title-text>
-              <md-card-title-media>
-                <div class="md-media-lg card-media">
-                  <img ng-src="{{card.link}}" alt="">
-                </div>
-              </md-card-title-media>
-            </md-card-title>
-            <md-card-actions layout="row" layout-align="start center">
-              <md-button target="_blank" ng-href="{{card.watch}}">Watch it Played</md-button>
-              <md-button target="_blank" ng-href="{{card.buy}}">Find on Amazon</md-button>
-            </md-card-actions>
-          </md-card>
-        </div>
-      </md-content>
-    </div>
+    <h1 class="md-display-3 title">My Favorite Board Games</h1>
+    <md-content class="md-padding" layout-xs="column" layout="row" ng-cloak>
+      <div ng-controller="Contentcontroller as contentCtrl" flex-xs flex-gt-xs="50" layout="column">
+        <md-card md-theme="default">
+          <md-card-content>
+            &nbsp;&nbsp;&nbsp;&nbsp;{{contentCtrl.mainContent}}
+          </md-card-content>
+        </md-card>
+        <md-card md-theme="default">
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">Types and Examples of Board Games:</span>
+            </md-card-title-text>
+          </md-card-title>
+          <br>
+          <md-card-content>
+            <md-list-item ng-repeat="type in contentCtrl.gameTypes" class="secondary-button-padding" ng-click="moreInformation($event, type)">
+              <p>{{type.name}}</p>
+            </md-list-item>
+          </md-card-content>
+        </md-card>
+      </div>
+      <div ng-controller="CardController as cardCtrl" flex-xs flex-gt-xs="50" layout="column">
+        <md-card ng-repeat="card in cardCtrl.cards track by $index" md-theme="default">
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">{{card.title}}</span>
+              <p>{{card.desc}}</p>
+            </md-card-title-text>
+            <md-card-title-media>
+              <div class="md-media-lg card-media">
+                <img ng-src="{{card.link}}" alt="">
+              </div>
+            </md-card-title-media>
+          </md-card-title>
+          <md-card-actions layout="row" layout-align="start center">
+            <md-button target="_blank" ng-href="{{card.watch}}">
+              <i class="material-icons">tv</i>
+            </md-button>
+            <md-button target="_blank" ng-href="{{card.buy}}">
+              <i class="material-icons">attach_money</i>
+            </md-button>
+          </md-card-actions>
+        </md-card>
+      </div>
+    </md-content>
 
     <script src="../node_modules/angular/angular.js"></script>
     <script src="../node_modules/angular-aria/angular-aria.js"></script>

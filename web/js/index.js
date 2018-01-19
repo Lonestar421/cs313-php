@@ -1,4 +1,52 @@
 angular.module('App', ['ngMaterial'])
+  .controller('Contentcontroller', ['$scope', '$mdDialog', function ($scope, $mdDialog) {
+    var contentCtrl = this;
+
+    contentCtrl.mainContent =
+      "One of my favorite past times has become playing board games." +
+      "Board games are such a great way to have a good time and get to know new people." +
+      "Over time I have accrued quite a collection and so I thought I would share a few of my favorites to the right." +
+      "There are plenty more that could be on the list, but these stuck out to me first." +
+      "They embody some of my favorite types of board games, which are area control (Revolution), " +
+      "cooperative (Escape: The Curse of the Temple), and party games (Walk the Plank)."
+
+    contentCtrl.gameTypes = [{
+        "name": "Roll and Move",
+        "desc": "Monopoly and The Game of Life."
+      }, {
+        "name": "Worker Placement",
+        "desc": "Agricola and Dungeon Lords"
+      }, {
+        "name": "Cooperative",
+        "desc": "Flashpoint and Pandemic"
+      }, {
+        "name": "Deck-Building",
+        "desc": "Dominion and Legendary: Marvel Deck Building Game"
+      }, {
+        "name": "Area Control",
+        "desc": "Risk and Smash Up"
+      }, {
+        "name": "Social Deduction",
+        "desc": "One Night Ultimate Werewolf and Coup"
+      }, {
+        "name": "Party Games",
+        "desc": "Apples to Apples and Two Rooms and a Boom"
+      }, {
+        "name": "Combat Games",
+        "desc": "King of Tokyo ans Neuroshima Hex 3.0"
+      }];
+
+    $scope.moreInformation = function(event, item) {
+      $mdDialog.show(
+        $mdDialog.alert()
+          .title(item.name)
+          .textContent(item.desc)
+          .ok('Done')
+          .clickOutsideToClose(true)
+          .targetEvent(event)
+      );
+    };
+  }])
   .controller('CardController', function() {
     var cardCtrl = this
     cardCtrl.cards = [{
@@ -20,5 +68,4 @@ angular.module('App', ['ngMaterial'])
         "watch": "https://youtu.be/PjzE1N9tvPU",
         "buy": "http://a.co/iXuEMkk"
       }];
-
   });
