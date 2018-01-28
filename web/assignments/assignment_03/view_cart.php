@@ -24,15 +24,20 @@
 
     <h2>Cart</h2>
     <ol>
-      <li>
-        <p>Rock One</p>
-      </li>
-      <li>
-        <p>Rock Two</p>
-      </li>
+      <?php
+
+        if ($_SESSION['rock_one']) {
+            echo "<li><p>Rock One</p></li>";
+        }
+
+        if ($_SESSION['rock_two']) {
+            echo "<li><p>Rock Two</p></li>";
+        }
+
+      ?>
     </ol>
 
-    <span>Total <?php echo "$total"; ?></span>
+    <span>Total $<?php echo "$total"; ?>.00</span>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/shopping_cart.js"></script>
