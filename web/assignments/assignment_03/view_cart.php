@@ -21,23 +21,26 @@
   <body>
 
     <h1>Buy Rocks</h1>
+    <form class="" action="checkout.php" method="post">
+      <h2>Cart</h2>
+      <ol>
+        <?php
 
-    <h2>Cart</h2>
-    <ol>
-      <?php
+          if ($_SESSION['rock_one']) {
+              echo "<li><p>Rock One</p><button type='button' onclick='removeItem('rock_one')'>Remove from Cart</button></li>";
+          }
 
-        if ($_SESSION['rock_one']) {
-            echo "<li><p>Rock One</p><button type='button' onclick='removeItem('rock_one')'>Add to Cart</button></li>";
-        }
+          if ($_SESSION['rock_two']) {
+              echo "<li><p>Rock Two</p><button type='button' onclick='removeItem('rock_two')'>Remove from Cart</button></li>";
+          }
 
-        if ($_SESSION['rock_two']) {
-            echo "<li><p>Rock Two</p><button type='button' onclick='removeItem('rock_two')'>Add to Cart</button></li>";
-        }
+        ?>
+      </ol>
 
-      ?>
-    </ol>
+      <span>Total $<?php echo "$total"; ?>.00</span>
 
-    <span>Total $<?php echo "$total"; ?>.00</span>
+      <button type="submit" name="button">Checkout</button>
+    </form>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/shopping_cart.js"></script>
