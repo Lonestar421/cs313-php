@@ -8,3 +8,7 @@ function removeItem(item) {
       window.location.reload(true);
     });
 }
+
+function view_chart() {
+  window.location.href = "https://quiet-river-98527.herokuapp.com/assignments/assignment_03/view_cart.php?";
+}

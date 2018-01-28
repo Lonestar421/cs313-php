@@ -16,7 +16,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/shopping_cart.css">
-    <title></title>
+    <title>Cart</title>
   </head>
   <body>
 
