@@ -2,6 +2,14 @@
   session_start();
 
   $total = 0;
+
+  if ($_SESSION['rock_one']) {
+      $total += 15;
+  }
+
+  if ($_SESSION['rock_two']) {
+      $total += 10;
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,20 +25,10 @@
     <h2>Cart</h2>
     <ol>
       <li>
-        <?php
-          if ($_SESSION['rock_one']) {
-              echo '<p>Rock One</p>';
-              $total += 15;
-          }
-        ?>
+        <p>Rock One</p>
       </li>
       <li>
-        <?php
-          if ($_SESSION['rock_two']) {
-              echo '<p>Rock Two</p>';
-              $total += 10;
-          }
-        ?>
+        <p>Rock Two</p>
       </li>
     </ol>
 
