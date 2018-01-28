@@ -1,11 +1,3 @@
-angular.module('App', ['ngMaterial'])
-  .controller('ItemController', ['$scope', '$mdDialog', function ($scope, $mdDialog) {
-    var itemCtrl = this;
-
-  }])
-  .controller('NavController', [ '$scope', function ($scope) {
-    $scope.currentNavItem = 'catalog';
-
-    $scope.goto = function(page) {
-      $scope.status = "Goto " + page;
-  }]);
+function addItem(item) {
+  $.post( "add_item.php", { selected: item } );
+}

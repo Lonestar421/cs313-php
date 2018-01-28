@@ -1,39 +1,40 @@
+<?php
+  session_start();
+
+  $_SESSION['rock_one'] = false;
+  $_SESSION['rock_two'] = false;
+?>
 <!DOCTYPE html>
-<html ng-app="App">
+<html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.6/angular-material.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/shopping_cart.css">
     <title>Shopping Cart</title>
   </head>
   <body>
 
-    <h1 class="md-display-3">Buy Rocks</h1>
+    <h1>Buy Rocks</h1>
 
     <form class="" action="php/shopping_cart.php" method="post">
         <h3>Inventory</h3>
         <ul>
           <li>
-            <div class="">
-              Rock One
-              <input type="checkbox" name="rock_one" value="">
-            </div>
+            <span>Rock One</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span>$10.00</span>
+            <button type="button" name="button" onclick="addItem('rock_one')">Add to Cart</button>
           </li>
           <li>
-            <div class="">
-              Rock Two
-              <input type="checkbox" name="rock_two" value="">
-            </div>
+            <span>Rock Two</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span>$15.00</span>
+            <button type="button" name="button" onclick="addItem('rock_two')">Add to Cart</button>
           </li>
         </ul>
         <button type="submit" name="button">Check Out</button>
     </form>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.8/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.8/angular-aria.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.8/angular-animate.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.6/angular-material.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/shopping_cart.js"></script>
   </body>
 </html>
