@@ -1,5 +1,5 @@
 <?php
-  $item = $_POST['selected']
+  $item = $_POST['selected'];
   echo "1";
   if ($item == "rock_one") {
     echo "2a";
