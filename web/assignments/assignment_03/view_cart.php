@@ -27,11 +27,11 @@
         <?php
 
           if ($_SESSION['rock_one']) {
-              echo "<li><p>Rock One</p><button type='button' onclick='removeItem('rock_one')'>Remove from Cart</button></li>";
+              echo "<li><span>Rock One</span><button type='button' onclick=\"removeItem('rock_one')\">Remove from Cart</button></li>";
           }
 
           if ($_SESSION['rock_two']) {
-              echo "<li><p>Rock Two</p><button type='button' onclick='removeItem('rock_two')'>Remove from Cart</button></li>";
+              echo "<li><span>Rock Two</span><button type='button' onclick=\"removeItem('rock_two')\">Remove from Cart</button></li>";
           }
 
         ?>
