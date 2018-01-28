@@ -3,5 +3,8 @@ function addItem(item) {
 }
 
 function removeItem(item) {
-  $.post( "php/remove_item.php", { selected: item } );
+  $.post( "php/remove_item.php", { selected: item } )
+    .done(function( data ) {
+      window.location.reload(true);
+    });
 }
