@@ -26,7 +26,7 @@
     </ol>
     <h4>Mailing Address</h4>
     <?php
-      echo '<p>' . $_POST['Street Address'] . '<br>' . $_POST['City'] . ', ' . $_POST['State'] . " " . $_POST['Zip Code'] . '</p>';
+      echo '<p>' . $_POST['Street_Address'] . '<br>' . $_POST['City'] . ', ' . $_POST['State'] . " " . $_POST['Zip_Code'] . '</p>';
      ?>
 
 

@@ -12,7 +12,7 @@
 
     <form class="" action="confirmation.php" method="post">
       <span>Street Address</span>
-      <input type="text" name="Street Address" value="">
+      <input type="text" name="Street_Address" value="">
       <br>
       <span>City</span>
       <input type="text" name="City" value="">
@@ -21,7 +21,7 @@
       <input type="text" name="State" value="">
       <br>
       <span>Zip Code</span>
-      <input type="text" name="Zip Code" value="">
+      <input type="text" name="Zip_Code" value="">
       <br>
       <button type="button" onclick="view_chart()">View Cart</button>
       <button type="submit">Complete Purchase</button>
