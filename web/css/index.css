@@ -2,6 +2,13 @@
     display: none;
 }
 
+.assignments-link {
+  float: right;
+  position: relative;
+  right: 20px;
+  color: white;
+}
+
 .title {
   text-align: center;
   margin-left: 25px;
