@@ -1,0 +1,42 @@
+<?php
+  session_start();
+
+  $total = 0;
+?>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/shopping_cart.css">
+    <title></title>
+  </head>
+  <body>
+
+    <h1>Buy Rocks</h1>
+
+    <h2>Cart</h2>
+    <ol>
+      <li>
+        <?php
+          if ($_SESSION['rock_one']) {
+              echo '<p>Rock One</p>';
+              $total += 15;
+          }
+        ?>
+      </li>
+      <li>
+        <?php
+          if ($_SESSION['rock_two']) {
+              echo '<p>Rock Two</p>';
+              $total += 10;
+          }
+        ?>
+      </li>
+    </ol>
+
+    <span>Total <?php echo "$total"; ?></span>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/shopping_cart.js"></script>
+  </body>
+</html>
