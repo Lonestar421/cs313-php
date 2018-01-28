@@ -4,11 +4,11 @@
   $total = 0;
 
   if ($_SESSION['rock_one']) {
-      $total += 15;
+      $total += 10;
   }
 
   if ($_SESSION['rock_two']) {
-      $total += 10;
+      $total += 15;
   }
 ?>
 <!DOCTYPE html>
@@ -27,11 +27,11 @@
       <?php
 
         if ($_SESSION['rock_one']) {
-            echo "<li><p>Rock One</p></li>";
+            echo "<li><p>Rock One</p><button type='button' onclick='removeItem('rock_one')'>Add to Cart</button></li>";
         }
 
         if ($_SESSION['rock_two']) {
-            echo "<li><p>Rock Two</p></li>";
+            echo "<li><p>Rock Two</p><button type='button' onclick='removeItem('rock_two')'>Add to Cart</button></li>";
         }
 
       ?>
