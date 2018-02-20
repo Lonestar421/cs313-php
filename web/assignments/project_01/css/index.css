@@ -1,0 +1,165 @@
+.title-logo {
+  text-align: center;
+  font-family: arial;
+  font-size: 60px;
+  margin-top: 0;
+}
+
+.main-nav {
+
+}
+
+.main-nav-options {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0px;
+  width: fit-content;
+}
+
+.main-nav-options > li {
+  display: inline;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 5px;
+}
+
+.main-nav-options > li > a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-family: arial;
+  font-size: 25px;
+}
+
+.main-nav-options > li:hover {
+  border-bottom: 5px solid black;
+}
+
+.login {
+  padding: 10px;
+}
+
+.login-button {
+  background-color: white;
+  border: 1px solid black;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+}
+
+.login-input {
+  border: 1px solid black;
+  margin-bottom: 2px;
+  padding: 5px;
+}
+
+.favorite-board-games {
+  padding-left: 10px;
+}
+
+.favorite-board-game-title {
+  font-size: 20px;
+  font-family: arial;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.favorite {
+  width: fit-content;
+  margin-left: 24px;
+}
+
+.game-type-results {
+  padding-left: 10px;
+}
+
+.game-type-heading {
+  font-family: arial;
+}
+
+.add-to-favorites {
+  margin-left: 25px;
+  position: relative;
+  bottom: 5px;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.add-to-favorites:hover {
+  background-color: black;
+  border: 1px solid black;
+  color: white;
+}
+
+.about {
+  margin: 0 auto;
+  width: 400px;
+}
+
+.about-paragraph {
+  text-align: center;
+}
+
+.main-content {
+  margin-top: 20px;
+}
+
+.panel {
+  padding: 5px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22);
+  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-right: 15px;
+  margin-left: 15px;
+  width: 700px;
+}
+
+.title {
+  padding: 5px;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}
+
+.description {
+  padding: 5px;
+  margin-left: 20px;
+}
+
+div.panel:nth-child(even) {
+  position: relative;
+  float: right;
+}
+
+div.panel:nth-child(odd) {
+  position: relative;
+  float: left;
+}
+
+.game-type-nav {
+  padding-left: 10px;
+}
+
+.game-type {
+  display: inline-block;
+  padding: 5px;
+  margin: 1px;
+  font-weight: bold;
+  border: 2px solid #74727245;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.game-type:active, .game-type:focus {
+  border: 2px solid #000;
+}
+
+.text-information {
+  display: inline-block;
+  width: 560px;
+}
+
+.img-information {
+  display: inline;
+}
