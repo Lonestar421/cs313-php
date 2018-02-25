@@ -1,4 +1,5 @@
 <?php
+
   session_start();
 
   // try
@@ -25,30 +26,44 @@
 
   $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 
+
+
   if (isset($_POST['login']))
   {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+    try
+    {
+      $username = $_POST["username"];
+      $password = $_POST["password"];
 
-    $query = 'SELECT person_id, username, password FROM person';
-    $result = $db->query($query);
+      $query = 'SELECT password, person_id FROM person WHERE username = :username';
+      $statement = $db->prepare($query);
 
-    foreach ($result as $row) {
-      if ($row['username'] == $username && $row['password'] == $password) {
+      $statement->bindValue(':username', $username);
+
+      $statement->execute();
+      $row = $statement->fetch(PDO::FETCH_ASSOC);
+
+      $valid = password_verify($password, $row['password']);
+
+      if ($valid) {
         $_SESSION['authenticate'] = true;
-        $_SESSION['user'] = $row['username'];
+        $_SESSION['user'] = $username;
         $_SESSION['user_id'] = $row['person_id'];
         $_SESSION['favorite_games'] = array();
-        break;
+
+        if (isset($_SESSION['user_id']))
+        {
+          foreach ($db->query('SELECT g.game_id FROM game g JOIN favorite_games fg ON g.game_id = fg.game_id WHERE fg.person_id = ' . $_SESSION['user_id']) as $row)
+          {
+            array_push($_SESSION['favorite_games'], $row['game_id']);
+          }
+        }
       }
     }
-
-    if (isset($_SESSION[user_id]))
+    catch (Exception $ex)
     {
-      foreach ($db->query('SELECT g.game_id FROM game g JOIN favorite_games fg ON g.game_id = fg.game_id WHERE fg.person_id = ' . $_SESSION['user_id']) as $row)
-      {
-        array_push($_SESSION['favorite_games'], $row['game_id']);
-      }
+      echo "Error with DB. Details: $ex";
+      die();
     }
   }
 
@@ -60,15 +75,45 @@
 
   if (isset($_POST['signup']))
   {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    $sql = 'INSERT INTO person(username,password) VALUES(:username,:password)';
-    $createPerson = $db->prepare($sql);
+    try {
+      $username = $_POST['username'];
+      $password = $_POST['password'];
 
-    $createPerson->bindValue(':username', $username);
-    $createPerson->bindValue(':password', $password);
+      $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-    $createPerson->execute();
+      $query = 'INSERT INTO person(username,password) VALUES(:username,:passwordHash)';
+      $statement = $db->prepare($query);
+
+      $statement->bindValue(':username', $username);
+      $statement->bindValue(':passwordHash', $passwordHash);
+
+      $statement->execute();
+
+      $query = 'SELECT person_id FROM person WHERE username = :username AND password = :passwordHash';
+      $statement = $db->prepare($query);
+
+      $statement->bindValue(':username', $username);
+      $statement->bindValue(':passwordHash', $passwordHash);
+
+      $statement->execute();
+      $row = $statement->fetch(PDO::FETCH_ASSOC);
+
+      $_SESSION['authenticate'] = true;
+      $_SESSION['user'] = $username;
+      $_SESSION['user_id'] = $row['person_id'];
+      $_SESSION['favorite_games'] = array();
+
+      if (isset($_SESSION['user_id']))
+      {
+        foreach ($db->query('SELECT g.game_id FROM game g JOIN favorite_games fg ON g.game_id = fg.game_id WHERE fg.person_id = ' . $_SESSION['user_id']) as $row)
+        {
+          array_push($_SESSION['favorite_games'], $row['game_id']);
+        }
+      }
+    } catch (Exception $ex) {
+      echo "Error with DB. Details: $ex";
+	    die();
+    }
   }
 ?>
 <!DOCTYPE html>
@@ -129,20 +174,24 @@
             <input id="signup" type="submit" name="signup" value="Sign Up" class="login-button">
           </form>
       </div>
-      <div>
+      <div class="favorite-games">
         <div class="favorite-board-game-title">
           Favorite Board Games
         </div>
         <div class="favorite-board-games">
           <?php
+            session_start();
+
             $favGames = $db->query('SELECT g.title FROM game g JOIN favorite_games fg ON g.game_id = fg.game_id WHERE fg.person_id = ' . $_SESSION['user_id']);
 
             if (isset($_SESSION['user']) && $favGames->rowCount() != 0)
             {
+              $index = 1;
               foreach ($favGames as $row)
               {
-                echo 'Title: ' . $row['title'];
+                echo $index . '. ' . $row['title'];
                 echo '<br/>';
+                $index++;
               }
             }
             else

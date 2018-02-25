@@ -28,7 +28,8 @@
 
   $game_id = $_POST["game_id"];
 
-  $sql = 'INSERT INTO favorite_games (person_id, game_id) VALUES (:person_id, :game_id)';
+  $sql = 'DELETE FROM favorite_games fg WHERE fg.person_id = :person_id AND fg.game_id = :game_id';
+
   $createPerson = $db->prepare($sql);
 
   $createPerson->bindValue(':person_id', $_SESSION['user_id']);
@@ -36,6 +37,5 @@
 
   $createPerson->execute();
 
-  array_push($_SESSION['favorite_games'], $game_id);
-
+  array_splice($_SESSION['favorite_games'], array_search($game_id, $_SESSION['favorite_games']), 1);
 ?>

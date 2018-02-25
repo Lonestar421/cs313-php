@@ -1,3 +1,7 @@
+html {
+  background-image: url("https://www.cheatsheet.com/wp-content/uploads/2017/10/monopoly-board.jpg");
+}
+
 .title-logo {
   text-align: center;
   font-family: arial;
@@ -6,7 +10,8 @@
 }
 
 .main-nav {
-
+  box-shadow: 1px 1px 5px 5px #fff;
+  background-color: white;
 }
 
 .main-nav-options {
@@ -70,8 +75,15 @@
   margin-left: 24px;
 }
 
+.favorite-games {
+  background-color: white;
+  box-shadow: 1px 1px 5px 5px #fff;
+}
+
 .game-type-results {
   padding-left: 10px;
+  background-color: white;
+  box-shadow: 1px 1px 5px 5px #fff;
 }
 
 .game-type-heading {
@@ -99,6 +111,8 @@
 
 .about-paragraph {
   text-align: center;
+  box-shadow: 1px 1px 5px 5px #fff;
+  background-color: white;
 }
 
 .main-content {
@@ -113,6 +127,7 @@
   margin-right: 15px;
   margin-left: 15px;
   width: 700px;
+  background-color: white;
 }
 
 .title {

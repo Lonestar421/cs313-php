@@ -8,6 +8,12 @@ function addFavortieGame(game_id) {
     });
 }
 
-function viewGameType(game_type_id) {
-  
+function removeFavortieGame(game_id) {
+
+  var url = '../php/removeFavGame.php';
+
+  $.post( url, { game_id:game_id })
+   .done(function( data ) {
+     window.location.reload(1);
+   });
 }

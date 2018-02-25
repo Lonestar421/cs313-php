@@ -74,7 +74,7 @@
       <?php
         session_start();
 
-        foreach ($db->query('SELECT game_id, title, duration, number_of_players, description, links FROM game') as $row)
+        foreach ($db->query('SELECT game_id, title, duration, number_of_players, description FROM game') as $row)
         {
           echo '<div class="panel">';
           echo '<div class="title">';
@@ -91,17 +91,14 @@
           echo '<li>';
           echo 'Number of Players: ' . $row['number_of_players'];
           echo '</li>';
-          echo '<li>';
-          echo 'Links: ' . $row['links'];
-          echo '</li>';
           echo '</ol>';
           if ($_SESSION['authenticate'] == true)
           {
             if (in_array($row['game_id'], $_SESSION['favorite_games']))
             {
-              echo '<div class="favorite">';
-              echo 'Favorite!';
-              echo '</div>';
+              echo '<button class="add-to-favorites" onclick="removeFavortieGame(' . $row['game_id'] . ')">';
+              echo 'Remove from Favorites';
+              echo '</button>';
             }
             else
             {
